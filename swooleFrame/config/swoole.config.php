@@ -16,6 +16,8 @@ return [
           //设置html根目录
           'document_root' => __DIR__.'/../../html',
           'enable_static_handler' => true,
+          //用来防止内存溢出错误，每个woker进出最多接受请求的次数
+          'max_request' => 3,
       ],
   ],
 

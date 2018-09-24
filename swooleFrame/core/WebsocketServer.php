@@ -41,4 +41,10 @@ class WebsocketServer extends SwooleServer {
         $response->end("<h1>Hello Swoole. #".rand(1000, 9999)."</h1>");
     }
 
+    //进程启动时的回调函数
+    public static function WorkerStart($serv, $worker_id){
+        //初始化加载框架配置
+        include __DIR__.'/init.php';
+    }
+
 }
