@@ -62,7 +62,13 @@ namespace swooleFrame\core;
              //为了兼容linux，将linux下面的/替换成\
              $className = str_replace('/','\\',$className);
 
-             $ret = str_replace('.php','',$className);
+             $len = strlen($className);
+             $phpLen = strlen('.php');
+
+             if($len>$phpLen){
+                 //截掉尾部的.php后缀
+                 $ret = substr($className,0,$len-$phpLen);
+             }
          }
          return $ret;
      }
