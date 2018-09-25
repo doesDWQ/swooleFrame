@@ -17,6 +17,12 @@ namespace swooleFrame\core;
          $phpFiles = [];
          //取出每一个目录
          foreach ($dirs as $dir){
+
+             if(!file_exists($dir)){
+                 //当目录不存在的时候跳过当前目录
+                 continue;
+             }
+
              //获取到目录里面所有的文件
              $files = scandir($dir);
 
