@@ -49,6 +49,8 @@ namespace swooleFrame\core;
                  $file = $phpFiles[$className];
                  //载入文件
                  include $file;
+                 //当文件被载入后需要释放掉这个键值对,减少内存的占用
+                 unset($phpFiles[$className]);
              }
          });
      }

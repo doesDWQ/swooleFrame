@@ -8,6 +8,8 @@
 
 namespace swooleFrame\core;
 
+use swooleFrame\frameTools\SwooleTool;
+
 include __DIR__.'/SwooleServer.php';
 class WebsocketServer extends SwooleServer {
 
@@ -22,6 +24,11 @@ class WebsocketServer extends SwooleServer {
     public static function open($ws, $request){
         //var_dump($request->fd, $request->get, $request->server);
         $ws->push($request->fd, "hello, welcome\n");
+        //SwooleTool::setTimerTick(1000,__CLASS__.'::hello');
+    }
+
+    public static function hello(){
+        echo 'hello';
     }
 
     //监听WebSocket消息事件
@@ -42,6 +49,11 @@ class WebsocketServer extends SwooleServer {
         //var_dump($request->get, $request->post);
         $response->header("Content-Type", "text/html; charset=utf-8");
         $response->end("<h1>Hello Swoole. #".rand(1000, 9999)."</h1>");
+
+
+//        swoole_timer_tick(1000,function (){
+//
+//        });
     }
 
     //进程启动时的回调函数
@@ -62,7 +74,8 @@ class WebsocketServer extends SwooleServer {
      */
     public static function task($server,$task_id,$worker_id,$data){
         $callback = $data['callback'];
-        call_user_func($callback);
+        $ret = ['server'=>$server,'taskId'=>$task_id,'worker_id'=>$worker_id,'data'=>$data];
+        call_user_func($callback,$ret);
         return $data;
     }
 
@@ -75,8 +88,13 @@ class WebsocketServer extends SwooleServer {
     public static function finish($server,$task_id,$data){
         $successCallback = $data['successCallback'];
         if($successCallback!==''){
+            $ret = [
+                'server'=>$server,
+                'task_id'=>$task_id,
+                'data'=>$data,
+            ];
             //只有传入了回调函数的时候才使用成功回调
-            call_user_func($successCallback);
+            call_user_func($successCallback,$ret);
         }
     }
 
