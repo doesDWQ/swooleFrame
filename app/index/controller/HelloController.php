@@ -7,16 +7,18 @@
  */
 namespace app\index\controller;
 
-use swooleFrame\frameTools\ObjectFactory;
-use swooleFrame\frameTools\Request;
+
+use swooleFrame\frameTools\FrameTool;
 
 class HelloController{
 
     public function hello(){
-        $mUser = ObjectFactory::getObj('app\index\model\Hello');
-        echo 'nihao吗ddd';
-        $mUser->setData(Request::get());
-        $mUser->save();
+//        $mem = FrameTool::getMemcache();
+//        $mem->set('name','小白');
+//        echo $mem->get('name');
+        $redis = FrameTool::getRedis();
+        $redis->set('redis','小白2');
+        echo $redis->get('redis');
 
     }
 }

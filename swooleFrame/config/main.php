@@ -33,4 +33,10 @@ return [
         'port' => 6379,
     ],
 
+    //memcache配置
+    'memcache'=>[
+        'host' => '127.0.0.1',
+        'port' => 11211,
+    ],
+
 ];

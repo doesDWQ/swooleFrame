@@ -35,6 +35,11 @@ class Request{
 
     //分发请求
     public static function requestToFunction(){
+        //过滤掉/favicon.ico请求
+        if(self::$server['path_info']==='/favicon.ico'){
+            return ;
+        }
+
         //得到请求的路径，默认分为三层，也只能是三层,需要截取最前面的一个'\'
         $pathInfo = substr(self::$server['path_info'],1);
         $path = explode('/',$pathInfo);

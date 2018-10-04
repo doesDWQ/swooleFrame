@@ -1,7 +1,5 @@
-#/bin/bash
-
 echo "reloading ....."
 pid=`pidof swoole_websocket`
-echo $pid
+echo $pid;
 kill -USR1 $pid
 echo "reloading success"

@@ -1,5 +1,4 @@
-[2018-10-04 13:35:57 $6403.0]	NOTICE	Server is reloading now.
-[2018-10-04 13:36:04 $6403.0]	NOTICE	Server is reloading now.
-[2018-10-04 13:41:24 $6403.0]	NOTICE	Server is reloading now.
-[2018-10-04 13:42:12 $6403.0]	NOTICE	Server is reloading now.
-[2018-10-04 14:24:40 *6453.0]	NOTICE	swFactoryProcess_finish (ERROR 1004): send 218 byte failed, because connection[fd=4] is closed.
+[2018-10-04 16:31:17 $36507.0]	NOTICE	Server is reloading now.
+[2018-10-04 17:17:50 $36507.0]	NOTICE	Server is reloading now.
+[2018-10-04 17:19:21 $36507.0]	NOTICE	Server is reloading now.
+[2018-10-04 17:19:43 $36507.0]	NOTICE	Server is reloading now.
