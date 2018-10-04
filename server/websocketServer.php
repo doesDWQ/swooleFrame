@@ -6,4 +6,4 @@
  * Time: 12:24
  */
 
-include '../swooleFrame/startServer/websocketServer.php';
+include __DIR__.'/../swooleFrame/startServer/websocketServer.php';

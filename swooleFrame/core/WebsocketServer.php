@@ -111,4 +111,11 @@ class WebsocketServer extends SwooleServer {
         }
     }
 
+    /*
+     * 设置主进程名称，用来平滑重启所有的子进程
+     */
+    public static function start($server){
+        swoole_set_process_name('swoole_websocket');
+    }
+
 }

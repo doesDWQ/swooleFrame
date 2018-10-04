@@ -112,6 +112,20 @@ class Request{
 
     //获得get请求的参数值
     public static function get($fileds=''){
+        return self::getParams(self::$get,$fileds);
+    }
+
+    //获得post请求的参数值
+    public static function post($fileds=''){
+        self::getParams(self::$post,$fileds);
+    }
+
+    public static function getParams($arr,$fileds=''){
+        //需要做一个防sql注入的机制
+        foreach ($arr as $key=>$v) {
+            htmlspecialchars($arr[$key]);
+        }
+
         if($fileds===''){
             return self::$get;
         }
@@ -120,18 +134,9 @@ class Request{
 
         $ret = [];
         foreach ($fileds as $filed){
-            $ret[$filed] = isset(self::$get[$filed])?self::$get[$filed]:'';
+            $ret[$filed] = isset($arr[$filed])?self::$get[$filed]:'';
         }
-    }
-
-    //获得post请求的参数值
-    public static function post($fileds){
-        $fileds = explode(',',$fileds);
-
-        $ret = [];
-        foreach ($fileds as $filed){
-            $ret[$filed] = isset(self::$post[$filed])?self::$post[$filed]:'';
-        }
+        return $ret;
     }
 
     public static function cookie(){

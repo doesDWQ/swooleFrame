@@ -14,7 +14,7 @@ class HelloController{
 
     public function hello(){
         $mUser = ObjectFactory::getObj('app\index\model\Hello');
-
+        echo 'nihao吗ddd';
         $mUser->setData(Request::get());
         $mUser->save();
 
