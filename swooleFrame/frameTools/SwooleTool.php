@@ -123,4 +123,75 @@ class SwooleTool{
         });
     }
 
+    /*
+     * 异步mysql
+     */
+    public static function asyncMysql($config,$sql,$successFun){
+        $db = new \swoole_mysql();
+
+        $db->connect($config, function ($db, $r) use($sql,$successFun){
+            if ($r === false) {
+                var_dump($db->connect_errno, $db->connect_error);
+                die;
+            }
+
+            $db->query($sql, function($db, $r) use($successFun){
+                if ($r === false)
+                {
+                    var_dump($db->error, $db->errno);
+                }
+                elseif ($r === true )
+                {
+                    var_dump($db->affected_rows, $db->insert_id);
+                }
+                call_user_func_array($successFun,$r);
+                $db->close();
+            });
+        });
+    }
+
+    /*
+     * 异步redis的操作底层调用__call()
+     * 异步redis，需要重新编译swoole扩展，并且添加上这个hiredis扩展
+     * 详情见官网
+     * 对于redis的资源无法被序列化，所有无法传递到回调函数里面(重点注意)
+     */
+    public static function asyncRedisSet($config,$key,$value){
+        $client = new \swoole_redis;
+        $client->connect($config['host'], $config['port'], function ($client, $result) use($key,$value){
+            if ($result === false) {
+                echo "connect to redis server failed.\n";
+                return;
+            }
+
+            //成功的回调不能少，否则回报错
+            $client->set($key,$value, function ($client, $result) {
+                //var_dump($result);
+            });
+        });
+    }
+
+    /*
+     * 协程有些东西需要加上参数重新编译redis
+     * 协程和异步不能同时使用
+     */
+    public static function cronRedis($config,$key){
+        $redis = new \Swoole\Coroutine\Redis();
+        $redis->connect($config['host'], $config['port']);
+        return $redis->get($key);
+    }
+
+    /*
+     * 协程mysql,这些东东都需要封装成单独的类的。因为这些对象需要被反复的使用到
+     */
+    public static function cronMysql($config,$sql,$retFun){
+        $swoole_mysql = new \Swoole\Coroutine\MySQL();
+        $swoole_mysql->connect($config);
+        $res = $swoole_mysql->query($sql);
+        call_user_func($retFun,['ret'=>$res]);
+    }
+
+
+
+
 }

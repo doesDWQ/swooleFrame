@@ -8,7 +8,9 @@
 
 namespace swooleFrame\core;
 
-use swooleFrame\frameTools\SwooleTool;
+use swooleFrame\frameTools\Error;
+use swooleFrame\frameTools\Request;
+use swooleFrame\frameTools\Response;
 
 include __DIR__.'/SwooleServer.php';
 class WebsocketServer extends SwooleServer {
@@ -24,11 +26,6 @@ class WebsocketServer extends SwooleServer {
     public static function open($ws, $request){
         //var_dump($request->fd, $request->get, $request->server);
         $ws->push($request->fd, "hello, welcome\n");
-        //SwooleTool::setTimerTick(1000,__CLASS__.'::hello');
-    }
-
-    public static function hello(){
-        echo 'hello';
     }
 
     //监听WebSocket消息事件
@@ -45,15 +42,31 @@ class WebsocketServer extends SwooleServer {
 
     //不加上这个http回调，内置的http动态和静态服务器都是无法启动的
     public static function request($request, $response) {
+        //初始化响应类
+        Response::init($response);
 
-        //var_dump($request->get, $request->post);
-        $response->header("Content-Type", "text/html; charset=utf-8");
-        $response->end("<h1>Hello Swoole. #".rand(1000, 9999)."</h1>");
+        ob_start();
+
+        //捕获用户级别错误
+        set_error_handler('\swooleFrame\frameTools\Error::error_handler');
+        set_exception_handler('\swooleFrame\frameTools\Error::error_handler');
+
+        try{
+            Request::init($request);
+        }catch (\Error $e){
+            //捕获错误
+            Error::getError($e);
+        }catch (\Exception $e){
+            //捕获异常
+            Error::getError($e);
+        }
 
 
-//        swoole_timer_tick(1000,function (){
-//
-//        });
+        //收集缓冲区内容
+        $content = ob_get_contents();
+        ob_clean();
+
+        Response::returnContent($content);
     }
 
     //进程启动时的回调函数

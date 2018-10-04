@@ -25,7 +25,7 @@ class Init{
         include SWOOLEFRAME.'/core/AutoLoad.php';
 
         //启动自动注册机制
-        AutoLoad::run($mainConfig['autoDirs']);
+        AutoLoad::auto($mainConfig['autoDirs']);
     }
 
 

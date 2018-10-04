@@ -9,12 +9,19 @@
 namespace swooleFrame\core;
  class AutoLoad{
 
+     private static $phpFiles = null;
      /*
       * $dirs:需要自动注册的类所在的目录的数组，当前每个目录都只支持一层
       */
+     public static function auto($dirs){
+         self::run($dirs);
+         //注册
+         self::Load();
+     }
+
      public static function run($dirs){
 
-         $phpFiles = [];
+         $sonDirs = [];
          //取出每一个目录
          foreach ($dirs as $dir){
 
@@ -26,22 +33,37 @@ namespace swooleFrame\core;
              //获取到目录里面所有的文件
              $files = scandir($dir);
 
-             //后缀为.php的文件才做出来
+             //后缀为.php的文件才需要被自动载入
              foreach ($files as $file){
+                 //.和..两个东东需要被跳过,否则这个程序会陷入死循环
+                 if($file=='.' || $file=='..'){
+                     continue;
+                 }
+
                  //拼接上目录
                  $file = $dir.'/'.$file;
-                 if(pathinfo($file,PATHINFO_EXTENSION)=='php'){
+
+                 if(is_file($file) && pathinfo($file,PATHINFO_EXTENSION)=='php'){
                      $className = self::getClassName($file);
-                     $phpFiles[$className] = $file;
+                     self::$phpFiles[$className] = $file;
+                 }
+                 elseif(is_dir($file)){
+                     //目录的处理
+                     $sonDirs[] = $file;
                  }
              }
          }
-         //注册
-         self::Load($phpFiles);
+
+         //目录需要递归调用注册---递归是一种很损耗性能的表现,
+         if(!empty($sonDirs)){
+             //不加这个判断会陷入死循环！！
+             self::run($sonDirs);
+         }
      }
 
      //自动为其注册
-     public static function Load($phpFiles){
+     public static function Load(){
+         $phpFiles = self::$phpFiles;
 
          //自动注册
          spl_autoload_register(function ($className) use($phpFiles){

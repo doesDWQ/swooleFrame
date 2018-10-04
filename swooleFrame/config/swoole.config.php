@@ -27,7 +27,8 @@ return [
           'task_worker_num'=>2,
           //防止taskWorker内存泄漏，当达到指定的次数后就销毁这个task进程
           'task_max_request'=>100,
-
+          //设置携程的最大个数，避免内存溢出
+          'max_coro_num'=>100,
       ],
   ],
 

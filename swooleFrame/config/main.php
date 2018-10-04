@@ -12,9 +12,25 @@ return [
     'autoDirs'=>[
         //框架目录下面的自动载入类
         __DIR__ . '/../frameTools',
-        //app目录下面的自动载入类
-        APP.'/appTools',
+        //app下面所有的php文件都需要被自动载入
+        __DIR__.'/../../app',
     ],
 
+
+    //MySQL配置
+    'mysql'=>[
+        'host' => '127.0.0.1',
+        'port' => 3306,
+        'user' => 'root',
+        'password' => 'root',
+        'database' => 'swoole',
+        'charset' => 'utf8', //指定字符集
+    ],
+
+    //redis配置
+    'redis'=>[
+        'host' => '127.0.0.1',
+        'port' => 6379,
+    ],
 
 ];
