@@ -9,6 +9,7 @@
 namespace swooleFrame\core;
 
 class Init{
+    public static $server = null;
     //定义各种目录常量
     public static function defineConstant(){
         define('ROOT',__DIR__.'/../..');    //项目根目录
@@ -29,11 +30,15 @@ class Init{
     }
 
 
-    public static function run(){
+    public static function run($server){
         self::defineConstant();
         self::autoLoad();
-
+        self::$server = $server;
     }
 
+    //平滑重启所有的进程
+    public static function restart(){
+        self::$server->reload();
+    }
 
 }

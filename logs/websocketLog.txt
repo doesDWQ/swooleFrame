@@ -1,4 +1,12 @@
-[2018-10-04 16:31:17 $36507.0]	NOTICE	Server is reloading now.
-[2018-10-04 17:17:50 $36507.0]	NOTICE	Server is reloading now.
-[2018-10-04 17:19:21 $36507.0]	NOTICE	Server is reloading now.
-[2018-10-04 17:19:43 $36507.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:14:23 $38321.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:15:35 $38321.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:16:02 $38321.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:16:27 $38321.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:17:57 $38321.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:18:27 $38321.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:19:47 $38321.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:22:39 $38321.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:23:47 $38321.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:24:04 $38321.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:25:29 $38321.0]	NOTICE	Server is reloading now.
+[2018-10-04 20:46:59 $38321.0]	NOTICE	Server is reloading now.

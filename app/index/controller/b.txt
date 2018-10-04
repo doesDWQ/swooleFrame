@@ -1,0 +1,1 @@
+<xml><URL><![CDATA[http://33nj66.natappfree.cc/index/weiChat/valid]]></URL><ToUserName><![CDATA[dwq1666666]]></ToUserName><FromUserName><![CDATA[oQsau0UThm9sDSMGML9RGVb5vRYo]]></FromUserName><CreateTime>1538649980</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[喜欢你哦]]></Content><MsgId>1222</MsgId></xml>

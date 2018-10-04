@@ -75,7 +75,7 @@ class WebsocketServer extends SwooleServer {
         include __DIR__.'/init.php';
 
         //初始化worker进程里面的操作
-        Init::run();
+        Init::run($serv);
 
     }
 

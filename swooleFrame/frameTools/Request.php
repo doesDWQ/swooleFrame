@@ -122,10 +122,11 @@ class Request{
 
     //获得post请求的参数值
     public static function post($fileds=''){
-        self::getParams(self::$post,$fileds);
+        return self::getParams(self::$post,$fileds);
     }
 
     public static function getParams($arr,$fileds=''){
+        $key = $fileds;
         //需要做一个防sql注入的机制
         foreach ($arr as $key=>$v) {
             htmlspecialchars($arr[$key]);
@@ -138,9 +139,15 @@ class Request{
         $fileds = explode(',',$fileds);
 
         $ret = [];
-        foreach ($fileds as $filed){
-            $ret[$filed] = isset($arr[$filed])?self::$get[$filed]:'';
+        if(count($fileds)==1){
+            $ret = isset($arr[$key])?$arr[$key]:'';
         }
+        else{
+            foreach ($fileds as $filed){
+                $ret[$filed] = isset($arr[$filed])?self::$get[$filed]:'';
+            }
+        }
+
         return $ret;
     }
 
@@ -148,5 +155,10 @@ class Request{
         return self::$cookie;
     }
 
-
+    /*
+     * 微信开发的时候使用，用户获取到xml数据包
+     */
+    public static function getRawContent(){
+        return self::$server->rawContent();
+    }
 }
