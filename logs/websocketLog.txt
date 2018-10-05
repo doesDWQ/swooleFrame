@@ -1,12 +1,27 @@
-[2018-10-04 20:14:23 $38321.0]	NOTICE	Server is reloading now.
-[2018-10-04 20:15:35 $38321.0]	NOTICE	Server is reloading now.
-[2018-10-04 20:16:02 $38321.0]	NOTICE	Server is reloading now.
-[2018-10-04 20:16:27 $38321.0]	NOTICE	Server is reloading now.
-[2018-10-04 20:17:57 $38321.0]	NOTICE	Server is reloading now.
-[2018-10-04 20:18:27 $38321.0]	NOTICE	Server is reloading now.
-[2018-10-04 20:19:47 $38321.0]	NOTICE	Server is reloading now.
-[2018-10-04 20:22:39 $38321.0]	NOTICE	Server is reloading now.
-[2018-10-04 20:23:47 $38321.0]	NOTICE	Server is reloading now.
-[2018-10-04 20:24:04 $38321.0]	NOTICE	Server is reloading now.
-[2018-10-04 20:25:29 $38321.0]	NOTICE	Server is reloading now.
-[2018-10-04 20:46:59 $38321.0]	NOTICE	Server is reloading now.
+int(1)
+NULL
+array(11) {
+  ["request_method"]=>
+  string(3) "GET"
+  ["request_uri"]=>
+  string(1) "/"
+  ["path_info"]=>
+  string(1) "/"
+  ["request_time"]=>
+  int(1538710601)
+  ["request_time_float"]=>
+  float(1538710601.2675)
+  ["server_port"]=>
+  int(8000)
+  ["remote_port"]=>
+  int(51102)
+  ["remote_addr"]=>
+  string(13) "192.168.111.1"
+  ["master_time"]=>
+  int(1538710601)
+  ["server_protocol"]=>
+  string(8) "HTTP/1.1"
+  ["server_software"]=>
+  string(18) "swoole-http-server"
+}
+Message: hello

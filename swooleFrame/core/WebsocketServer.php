@@ -30,7 +30,8 @@ class WebsocketServer extends SwooleServer {
 
     //监听WebSocket消息事件
     public static function message($ws, $frame){
-        //echo "Message: {$frame->data}\n";
+        file_put_contents(__DIR__.'/message.txt',json_encode($frame));
+        echo "Message: {$frame->data}\n";
         //使用push对客户端推送消息
         $ws->push($frame->fd, "server: {$frame->data}");
     }

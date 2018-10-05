@@ -7,4 +7,31 @@
 <body>
     hello it me !
 </body>
+<script>
+    var wsServer = 'ws://www.swoole1.com:8000';
+    var websocket = new WebSocket(wsServer);
+
+    //打开一个websocket连接触发的回调事件
+    websocket.onopen = function (evt) {
+        console.log(evt);
+        websocket.send('hello');
+        console.log("Connected to WebSocket server.");
+    };
+
+    //websocket连接关闭时触发的回调事件
+    websocket.onclose = function (evt) {
+        console.log("Disconnected");
+    };
+
+    //接收到服务器端推送过来的事件回调的函数
+    websocket.onmessage = function (evt) {
+        console.log('Retrieved data from server: ' + evt.data);
+    };
+
+    //发生错误是的回调函数
+    websocket.onerror = function (evt, e) {
+        console.log('Error occured: ' + evt.data);
+    };
+
+</script>
 </html>
