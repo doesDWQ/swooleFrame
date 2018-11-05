@@ -31,4 +31,9 @@ class FrameTool{
         return ObjectFactory::getObj('swooleFrame\frameTools\Mysql');
     }
 
+    //获得操作对象
+    public static function getObj($className){
+        $class = 'swooleFrame\\frameTools\\'.$className;
+        return ObjectFactory::getObj($class);
+    }
 }

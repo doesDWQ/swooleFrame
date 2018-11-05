@@ -10,7 +10,13 @@
 namespace app\appTools;
 
 
+use swooleFrame\frameTools\ObjectFactory;
+
 class AppTool
 {
-
+    //获得模型操作对象
+    public static function getObj($className){
+        $class = 'app\\model\\'.$className;
+        return ObjectFactory::getObj($class);
+    }
 }
