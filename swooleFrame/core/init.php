@@ -19,14 +19,11 @@ class Init{
 
     //启动自动注册机制
     public static function autoLoad(){
-        //导入配置文件
-        $mainConfig = include SWOOLEFRAME.'/config/main.php';
-
         //引入自动注册类
         include SWOOLEFRAME.'/core/AutoLoad.php';
 
         //启动自动注册机制
-        AutoLoad::auto($mainConfig['autoDirs']);
+        AutoLoad::Load();
     }
 
 

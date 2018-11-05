@@ -21,11 +21,13 @@ class TestController{
 //        $redis = FrameTool::getRedis();
 //        $redis->set('redis','小白2');
 //        echo $redis->get('redis');
-          echo 'hello it me 你好吗';
+          echo 2/0;
+          echo 'hello it me 你好吗,我喜欢你';
     }
 
     public function restart(){
         Init::restart();
         echo '重启成功';
     }
+
 }
