@@ -21,7 +21,6 @@ class TestController{
 //        $redis = FrameTool::getRedis();
 //        $redis->set('redis','小白2');
 //        echo $redis->get('redis');
-          echo 2/0;
           echo 'hello it me 你好吗,我喜欢你';
     }
 

@@ -6,4 +6,4 @@
  * Time: 12:25
  */
 
-include '../swooleFrame/startServer/httpServer.php';
+include __DIR__.'/../swooleFrame/startServer/httpServer.php';

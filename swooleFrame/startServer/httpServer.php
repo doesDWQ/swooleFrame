@@ -8,4 +8,5 @@
 
 include __DIR__.'/../core/ServerFactory.php';
 $config = include __DIR__.'/../config/swoole.config.php';
+
 new \swooleFrame\core\ServerFactory('HttpServer',$config['http']);

@@ -8,6 +8,8 @@
 
 namespace swooleFrame\frameTools;
 
+use swooleFrame\core\ServerFactory;
+
 class Error
 {
 
@@ -31,9 +33,12 @@ class Error
                 break;
         }
 
-        $str = "<span style='color:red;font-size: 20px;'>{$error_type}: {$error_message} in {$file} on line {$line}</span></span><br/>";
+        $str1 = "{$error_type}: {$error_message} in {$file} on line {$line}";
+        //将错误写入到日志中
+        $time = date('Y-m-d_H:i:s');
+        FrameTool::writeLog($str1,'error'.$time);
+        $str = "<span style='color:red;font-size: 20px;'>{$str1}</span></span><br/>";
         echo $str;
-
     }
 
     public static function getError($e){

@@ -9,14 +9,16 @@ namespace swooleFrame\core;
 
 class ServerFactory{
     private $server = null;
+    public static $serverName = '';
 
     public function __construct($serverName,$config)
     {
+        self::$serverName = $serverName;
         //引入对应的类
         include __DIR__."/{$serverName}.php";
 
         //必须要加上这么一句，不然php解释器会报错
-        $serverName = "\\swooleFrame\core\\".$serverName;
+        $serverName = "\\swooleFrame\\core\\".$serverName;
 
         //获得初始化的server对象
         $this->server = $serverName::init($config['server_address']);

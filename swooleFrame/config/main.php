@@ -30,4 +30,6 @@ return [
         'port' => 11211,
     ],
 
+    //日志文件的位置
+    'logDir'=>'/mnt/swooleLogs',
 ];

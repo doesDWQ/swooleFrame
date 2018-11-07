@@ -1,1 +1,0 @@
-nohup /usr/local/php/bin/php ../websocketServer.php > /mnt/websocketLogs/websocket.log &

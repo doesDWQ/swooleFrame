@@ -1,0 +1,1 @@
+nohup /usr/local/php/bin/php ../httpServer.php > /mnt/swooleLogs/http.log &
