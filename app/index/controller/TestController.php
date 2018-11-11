@@ -15,13 +15,7 @@ use swooleFrame\frameTools\Request;
 class TestController{
 
     public function hello(){
-//        $mem = FrameTool::getMemcache();
-//        $mem->set('name','小白');
-//        echo $mem->get('name');
-//        $redis = FrameTool::getRedis();
-//        $redis->set('redis','小白2');
-//        echo $redis->get('redis');
-          echo 'hello it me 你好吗,我喜欢你';
+          echo 'hello it me 你好吗,我喜欢你,tts aa tt';
     }
 
     public function restart(){
