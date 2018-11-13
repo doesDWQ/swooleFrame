@@ -18,9 +18,4 @@ class TestController{
           echo 'hello it me 你好吗,我喜欢你,tts aa tt';
     }
 
-    public function restart(){
-        Init::restart();
-        echo '重启成功';
-    }
-
 }
