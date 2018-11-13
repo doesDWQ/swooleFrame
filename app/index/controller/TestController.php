@@ -15,12 +15,7 @@ use swooleFrame\frameTools\Request;
 class TestController{
 
     public function hello(){
-        echo 'hello it medd ggg';
-    }
 
-    public function restart(){
-        Init::restart();
-        echo '重启成功';
     }
 
 }
