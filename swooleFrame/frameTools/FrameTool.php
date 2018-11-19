@@ -11,10 +11,13 @@ use swooleFrame\core\ServerFactory;
 
 class FrameTool{
 
+    public static $config = '';
+
     //自动加载配置文件的助手函数
     public static function getConfig($fileName,$keyName){
-        $config = include __DIR__.'/../config/'.$fileName;
-        $needConfig = isset($config[$keyName])?$config[$keyName]:false;
+        self::$config = include_once __DIR__.'/../config/'.$fileName;
+        $needConfig = isset(self::$config[$keyName])?self::$config[$keyName]:false;
+
         return $needConfig;
     }
 
