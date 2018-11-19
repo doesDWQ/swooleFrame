@@ -7,6 +7,7 @@
  * 自动注册类
  */
 namespace swooleFrame\core;
+ use swooleFrame\frameTools\ObjectFactory;
  use think\image\Exception;
 
  class AutoLoad{
@@ -27,7 +28,7 @@ namespace swooleFrame\core;
                 require_once $classPath;
             }
             else{
-                throw new \Exception("需要被加载的类不存在！");
+                throw new \Exception("需要被加载的类{$className}不存在！");
             }
         });
     }

@@ -35,25 +35,4 @@ class FrameTool{
         }
     }
 
-    //获得memcache操作对象
-    public static function getMemcache(){
-        return ObjectFactory::getObj('swooleFrame\frameTools\Mem');
-    }
-
-    //获得Redis操作对象
-    public static function getRedis(){
-        return ObjectFactory::getObj('swooleFrame\frameTools\Red');
-    }
-
-    //获得mysql操作类
-    public static function getMysql(){
-        return ObjectFactory::getObj('swooleFrame\frameTools\Mysql');
-    }
-
-    //获得操作对象
-    public static function getObj($className){
-        $class = 'swooleFrame\\frameTools\\'.$className;
-        return ObjectFactory::getObj($class);
-    }
-
 }

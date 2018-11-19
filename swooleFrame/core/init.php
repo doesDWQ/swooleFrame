@@ -8,6 +8,8 @@
 //这个命名空间是有必要加上，可以减少一些以后可能产生的麻烦
 namespace swooleFrame\core;
 
+use swooleFrame\frameTools\ObjectFactory;
+
 class Init{
     public static $server = null;
     //定义各种目录常量

@@ -9,10 +9,17 @@
 namespace app\index\controller;
 
 
+use app\index\model\Hello;
+use swooleFrame\frameTools\ObjectFactory;
 use swooleFrame\frameTools\Request;
 
 class WeiChatController
 {
+    public function test(){
+        echo '<pre>';
+        ObjectFactory::getObj(Hello::class);
+        var_dump(ObjectFactory::$arr);
+    }
     public static $weiChat = [
         'AppID'=>'wx7f10536bb0d43c7c',
         'AppSecret'=>'ac2005f6ff245031ff0d056dd9e23aa2',

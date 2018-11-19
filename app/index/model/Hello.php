@@ -13,6 +13,15 @@ use swooleFrame\frameTools\Model;
 
 class Hello extends Model
 {
+    //持有表名
     protected $tableName = 'user';
+
+    public function test(){
+        echo 'hello 11';
+    }
+
+    public static function hello(){
+        echo 'hello';
+    }
 
 }

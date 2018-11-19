@@ -26,11 +26,12 @@ class Request{
     //初始化，拿到每次的get和post以及server数据
     public static function init($request)
     {
-        //var_dump($request);
+        ObjectFactory::init();
         //设置变量值
         self::setInfo($request);
         //分发请求
         self::requestToFunction();
+        unset($objFactory);
     }
 
     //分发请求
@@ -160,5 +161,10 @@ class Request{
      */
     public static function getRawContent(){
         return self::$server->rawContent();
+    }
+
+    //获取到request对象
+    public static function getRequest(){
+        return self::$request;
     }
 }
