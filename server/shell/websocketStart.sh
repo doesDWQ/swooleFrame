@@ -1,1 +1,1 @@
-nohup /usr/local/php/bin/php ../websocketServer.php > /mnt/swooleLogs/websocket.log &
+nohup /usr/local/php/bin/php ../websocketServer.php > ../../logs/websocket.log &
