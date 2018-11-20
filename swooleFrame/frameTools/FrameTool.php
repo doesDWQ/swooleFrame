@@ -11,10 +11,13 @@ use swooleFrame\core\ServerFactory;
 
 class FrameTool{
 
+    public static $config = '';
+
     //自动加载配置文件的助手函数
     public static function getConfig($fileName,$keyName){
-        $config = include __DIR__.'/../config/'.$fileName;
-        $needConfig = isset($config[$keyName])?$config[$keyName]:false;
+        self::$config = include_once __DIR__.'/../config/'.$fileName;
+        $needConfig = isset(self::$config[$keyName])?self::$config[$keyName]:false;
+
         return $needConfig;
     }
 
@@ -33,27 +36,6 @@ class FrameTool{
             $data = ServerFactory::$serverName.':'.$data1.$data.PHP_EOL;
             file_put_contents($file,$data,FILE_APPEND);
         }
-    }
-
-    //获得memcache操作对象
-    public static function getMemcache(){
-        return ObjectFactory::getObj('swooleFrame\frameTools\Mem');
-    }
-
-    //获得Redis操作对象
-    public static function getRedis(){
-        return ObjectFactory::getObj('swooleFrame\frameTools\Red');
-    }
-
-    //获得mysql操作类
-    public static function getMysql(){
-        return ObjectFactory::getObj('swooleFrame\frameTools\Mysql');
-    }
-
-    //获得操作对象
-    public static function getObj($className){
-        $class = 'swooleFrame\\frameTools\\'.$className;
-        return ObjectFactory::getObj($class);
     }
 
 }

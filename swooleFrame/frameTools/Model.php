@@ -21,7 +21,7 @@ class Model
 
     public function __construct()
     {
-        $this->mysql = ObjectFactory::getObj('swooleFrame\frameTools\Mysql');
+        $this->mysql = ObjectFactory::getResources('swooleFrame\frameTools\Mysql');
     }
 
     //保存整条数据

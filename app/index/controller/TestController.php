@@ -8,13 +8,18 @@
 namespace app\index\controller;
 
 
-use swooleFrame\core\Init;
-use swooleFrame\frameTools\FrameTool;
+use app\appTools\AppTool;
+use app\index\model\Hello;
+use swooleFrame\frameTools\ObjectFactory;
 use swooleFrame\frameTools\Request;
 
+;
 class TestController{
 
     public function hello(){
+        echo '<pre>';
+        ObjectFactory::getObj(Hello::class);
+        var_dump(ObjectFactory::$arr);
 
     }
 
