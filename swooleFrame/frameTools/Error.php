@@ -35,10 +35,10 @@ class Error
 
         $str1 = "{$error_type}: {$error_message} in {$file} on line {$line}";
         //将错误写入到日志中
-        $time = date('Y-m-d_H:i:s');
-        FrameTool::writeLog($str1,'error'.$time);
+        FrameTool::writeLog($str1,'error');
         $str = "<span style='color:red;font-size: 20px;'>{$str1}</span></span><br/>";
-        echo $str;
+        //默认返回json
+        Response::returnJson($str,4);
     }
 
     public static function getError($e){

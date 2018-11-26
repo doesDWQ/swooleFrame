@@ -1,0 +1,4 @@
+HttpServer:====2018:11:27 00:08:40=============
+Unknown: 访问路径必须只能是三层pathinfo in /samba/anonymous/swooleFrame/swooleFrame/frameTools/Request.php on line 69
+HttpServer:====2018:11:27 00:08:43=============
+Unknown: 访问路径必须只能是三层pathinfo in /samba/anonymous/swooleFrame/swooleFrame/frameTools/Request.php on line 69

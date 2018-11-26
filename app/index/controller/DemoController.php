@@ -7,8 +7,12 @@
  */
 namespace app\index\controller;
 
+use swooleFrame\frameTools\Response;
+
 class DemoController{
     public function hello(){
-        echo 'dddd';
+//        echo 'aaa';
+        //Response::returnJson(['a'=>'hello']);
+        echo 'hello';
     }
 }

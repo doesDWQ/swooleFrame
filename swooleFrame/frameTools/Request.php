@@ -66,7 +66,7 @@ class Request{
 
         }
         else{
-            echo '访问路径必须只能是三层pathinfo！'.PHP_EOL;
+            throw new \Exception('访问路径必须只能是三层pathinfo');
         }
     }
 

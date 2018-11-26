@@ -44,7 +44,14 @@ class Inotify{
     private static $ifd = null;
     private static $my_event = null;
 
-    public static function run(){
+    public static function run($flag){
+        //传入了restart参数,表示需要重启master进程!
+        if($flag){
+            exec('kill $(pidof swoole_http)');
+            echo '重启成功!'.PHP_EOL;
+        }
+
+
         $pid = exec('pidof swoole_http');
 
         if(empty($pid)){
@@ -113,4 +120,8 @@ class Inotify{
 
 }
 
-Inotify::run();
+$flag = false;
+if(isset($argv[1]) && $argv[1]=='restart'){
+    $flag = true;
+}
+Inotify::run($flag);

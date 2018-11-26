@@ -31,5 +31,5 @@ return [
     ],
 
     //日志文件的位置
-    'logDir'=>'/mnt/swooleLogs',
+    'logDir'=>__DIR__.'/../../logs',
 ];

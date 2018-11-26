@@ -22,7 +22,7 @@ class FrameTool{
     }
 
     //写日志
-    public static function writeLog($data,$fileName){
+    public static function writeLog($data,$fileName='error'){
         //获取到日志目录
         $logDir = self::getConfig('main.php','logDir');
         if(!empty($fileName)){
@@ -34,7 +34,14 @@ class FrameTool{
             $data1 = "===={$time}=============".PHP_EOL;
             //在错误前面加上当前日志的所属服务器
             $data = ServerFactory::$serverName.':'.$data1.$data.PHP_EOL;
-            file_put_contents($file,$data,FILE_APPEND);
+
+            //当日志文件大于1m的时候,需要分割文件
+            if(file_exists($file) && filesize($file)>5*1024*1024){
+                rename($file,$file.date('YmdHis'));
+            }else{
+                file_put_contents($file,$data,FILE_APPEND);
+            }
+
         }
     }
 
